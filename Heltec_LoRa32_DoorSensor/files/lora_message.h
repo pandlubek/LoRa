@@ -21,10 +21,10 @@ void resetMessageCounter()
 }
 
 void setBatteryLevel()
-{
-  batteryLevel[0] = '0';
-  batteryLevel[1] = '9';
-  batteryLevel[2] = '9';
+{  String lvl = getBatteryLevel();
+  batteryLevel[0] = lvl[0];
+  batteryLevel[1] = lvl[1];
+  batteryLevel[2] = lvl[2];
 }
 
 void cleanDecryptedInputMessage()
