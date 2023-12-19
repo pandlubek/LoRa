@@ -54,8 +54,6 @@ void loop()
         lastAwakening = millis();
       }
       Radio.IrqProcess();
-
-      readBatteryVoltage(true);
       Serial.println();
     }
   }
@@ -69,8 +67,6 @@ void loop()
       lastAwakening = millis();
     }
     Radio.IrqProcess();
-
-    readBatteryVoltage(true);
     
     Serial.printf("Going to sleep now for %ds (%dm or %dh)\r\n", WAKEUP_INTERVAL_IN_SEC, WAKEUP_INTERVAL_IN_SEC/60, WAKEUP_INTERVAL_IN_SEC/3600);
     esp_deep_sleep_start();

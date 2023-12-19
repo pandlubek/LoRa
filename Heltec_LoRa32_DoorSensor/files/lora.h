@@ -6,15 +6,15 @@ static RadioEvents_t RadioEvents;
 
 void OnTxDone(void)
 {
-	Serial.println("TX done");
-	lora_idle = true;
+  Serial.println("TX done");
+  lora_idle = true;
 }
 
 void OnTxTimeout(void)
 {
-    Radio.Sleep();
-    Serial.println("TX Timeout");
-    lora_idle = true;
+  Radio.Sleep();
+  Serial.println("TX Timeout");
+  lora_idle = true;
 }
 
 void initializeLoRaRadio()

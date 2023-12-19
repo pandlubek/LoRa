@@ -1,7 +1,7 @@
 char getContactSensorStatus(bool printStatus = false)
 {
   bool pinState = digitalRead(CONTACT_SENSOR_GPIO_NUM);
-  
+
   if (pinState && CONTACT_SENSOR_TYPE || !pinState && !CONTACT_SENSOR_TYPE)
   {
     if (printStatus)
