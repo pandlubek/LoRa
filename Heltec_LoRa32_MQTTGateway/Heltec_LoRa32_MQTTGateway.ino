@@ -1,3 +1,4 @@
+// external libraries
 #include "LoRaWan_APP.h"
 #include "Arduino.h"
 #include "WiFi.h"
@@ -5,8 +6,11 @@
 #include "Preferences.h"
 #include "PubSubClient.h"
 
+// variables
 unsigned long now = millis();
+unsigned char * encryptedInputMessage;
 
+// project files
 #include "files/configuration.h"
 #include "files/wifi.h"
 #include "files/aes.h"
@@ -14,8 +18,6 @@ unsigned long now = millis();
 #include "files/lora_message.h"
 #include "files/mqtt.h"
 #include "files/mqtt_message.h"
-
-unsigned char * encryptedInputMessage;
 
 void setup() 
 {
