@@ -24,7 +24,7 @@
 #define BUFFER_SIZE                 128 // Define the payload size here
 
 // deep sleep mode
-#define WAKEUP_INTERVAL_IN_SEC      60 // 86400 24h
+#define WAKEUP_INTERVAL_IN_SEC      86400 // 86400 24h
 
 // contact sensor
 #define CONTACT_SENSOR_TYPE         1 // 1 - NO (normally open), 0 - NC (normally closed)
