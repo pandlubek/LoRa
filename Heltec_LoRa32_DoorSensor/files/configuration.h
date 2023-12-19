@@ -29,3 +29,10 @@
 // contact sensor
 #define CONTACT_SENSOR_TYPE         1 // 1 - NO (normally open), 0 - NC (normally closed)
 #define CONTACT_SENSOR_GPIO_NUM     0
+
+// battery
+// Below settings work only for the Heltec LoRa32 V3 board.
+// If you are using a V2 or other board, you need to change
+// the GPIO numbers according to the board documentation.
+#define BATTERY_VOLTAGE_GPIO_NUM  1
+#define ADC_CTRL                  37 // This GPIO toggles the battery voltage reading
