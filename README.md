@@ -30,7 +30,7 @@ This sketch is intended to be installed on Heltec LoRa3 [V3](https://resource.he
 
 ![Circuit diagram](https://github.com/pandlubek/LoRa/assets/152999857/98bc71d2-c74e-4d84-8ae1-27341704bdf9)
 
-An NC (normally open) or NC (normally closed) reed switch can be used. The switch type can be set in the `configuration.h` file.
+An NO (normally open) or NC (normally closed) reed switch can be used. The switch type can be set in the `configuration.h` file.
 
 ## Electronic housing
 
