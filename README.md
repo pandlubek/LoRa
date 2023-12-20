@@ -12,10 +12,9 @@ All configuration parameters are located in the `configuration.h` file.
 
 ## Electronic housing
 
-
 If you are interested in a case for this device, you can print it using this [3D model](https://www.thingiverse.com/thing:6363352).
 
-![Electronic housing](https://cdn.thingiverse.com/assets/9e/2d/06/bb/97/large_display_609d20ab-3c6b-4e26-bdd4-fccceb8b7cda.jpg)
+![Heltec LoRa32 gateway housing](https://github.com/pandlubek/LoRa/assets/152999857/1450ab65-a2b5-43e9-bdbf-38a1a164cd68)
 
 ## Plans for the future
 - Add support for built-in OLED display
