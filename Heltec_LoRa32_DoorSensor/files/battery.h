@@ -20,11 +20,15 @@ String getBatteryLevel(bool printBatteryLevel = false)
   float v = getBatteryVoltage(true);
   String level = "000";
 
-  if (v >= 4.1)
+  if (v >= 3.9)
   {
     level = "100";
   }
   else if (v >= 3.8)
+  {
+    level = "090";
+  }
+  else if (v >= 3.7)
   {
     level = "075";
   }
