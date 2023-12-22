@@ -62,7 +62,7 @@ void mqttConnection()
   else
   {
     Serial.print(" failed, rc=");
-    Serial.print(mqttClient.state());
+    Serial.print(mqttClient.state() + "\r\n");
   }
   lastMQTTConnectionTrigger = millis();
 }
