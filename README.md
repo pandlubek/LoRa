@@ -34,7 +34,9 @@ An NO (normally open) or NC (normally closed) reed switch can be used. The switc
 
 ## Electronic housing
 
-Coming soon...
+If you are interested in a case for this device, you can print it using this [3D model](https://www.thingiverse.com/thing:6402382).
+
+![Heltec LoRa32 door sensor case](https://github.com/pandlubek/LoRa/assets/152999857/3eafb95a-a588-4bb1-b65e-35156afce79e)
 
 ## Plans for the future
 
