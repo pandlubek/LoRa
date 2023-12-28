@@ -115,9 +115,11 @@ bool validateLoRaMessage()
         return false;
       }
 
-  if (extractLoRaIncomingMessageNumber() <= getLastSavedLoRaMessageNumber())
+  int incommingMessageNumber = extractLoRaIncomingMessageNumber();
+  int savedMessageNumber = getLastSavedLoRaMessageNumber();
+  if (incommingMessageNumber <= savedMessageNumber)
   {
-    Serial.println("LoRa message is valid, but the incomming message numer is lower than the last one saved");
+    Serial.printf("LoRa message is valid, but the incomming message numer (%s) is lower than the last one saved (%s)\r\n", String(incommingMessageNumber), String(savedMessageNumber));
     return false;
   }
 
