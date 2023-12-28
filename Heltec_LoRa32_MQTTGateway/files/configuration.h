@@ -35,6 +35,10 @@
 //
 #define MQTT_TOPIC_BATTERY             "/batterylevel"
 //
+#define MQTT_TOPIC_CPU_TEMP_CELSIUS    "loragateway/cputemp/C"
+#define MQTT_TOPIC_CPU_TEMP_FAHRENHEIT "loragateway/cputemp/F"
+#define CPU_TEMP_READ_INTERVAL_IN_SEC  60
+//
 #define MQTT_TOPIC_LWT                 "loragateway/lwt" // LWT - availability of the LoRa gateway
 #define MQTT_MSG_LWT_ONLINE            "ON" // message that is published to LWT channel when device is online
 #define MQTT_MSG_LWT_OFFLINE           "OFF" // message that is published to LWT channel when device is offline
