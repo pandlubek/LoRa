@@ -1,10 +1,10 @@
 // external libraries
-#include "LoRaWan_APP.h"
-#include "Arduino.h"
-#include "WiFi.h"
-#include "mbedtls/aes.h"
-#include "Preferences.h"
-#include "PubSubClient.h"
+#include "LoRaWan_APP.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "Arduino.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "WiFi.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "mbedtls/aes.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "Preferences.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "PubSubClient.h" // https://github.com/knolleary/pubsubclient
 
 // variables
 unsigned long now = millis();
