@@ -11,6 +11,7 @@ void setupWiFi()
   delay(100);
 
   int attempt = 0;
+  Serial.print("\r\nConnecting Wi-Fi...");
   while (WiFi.status() != WL_CONNECTED) {
     if (attempt == 60)
     {
@@ -20,8 +21,7 @@ void setupWiFi()
     Serial.print(".");
     attempt++;
   }
-  Serial.println();
-  Serial.println("WiFi connected");
+  Serial.print("connected\r\n");
   Serial.print("IP address: ");
   Serial.print(WiFi.localIP());
   Serial.println();
