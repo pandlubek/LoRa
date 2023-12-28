@@ -53,6 +53,8 @@ void loop()
 
   mqttConnection();
 
+  publishMQTTMessage_Gateway_CpuTemp();
+
   // receive and decode LoRa message
   if(lora_idle)
   {
@@ -66,8 +68,8 @@ void loop()
     if (validateLoRaMessage())
     {
       updateLastSavedLoRaMessageNumber();
-      publishMQTTMessage_ContactSensor();
-      publishMQTTMessage_BatteryLevel();
+      publishMQTTMessage_Node_ContactSensor();
+      publishMQTTMessage_Node_BatteryLevel();
     }
 
     lora_idle = false;
