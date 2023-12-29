@@ -14,6 +14,13 @@ void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
   Radio.Sleep( );
   
   Serial.printf("\r\nReceived packet: \"%s\", rssi: %d, length: %d", rxpacket, rssi, rxSize);
+  
+  oled.clear();
+  oled.drawString(0, 0, "Received LoRa packet:");
+  oled.drawString(0, 10, String(rxpacket));
+  oled.drawString(0, 20, "Rssi: " + String(rssi));
+  oled.drawString(0, 30, "Length: " + String(rxSize));
+  oled.display();
 
   lora_idle = true;
 }
@@ -40,4 +47,31 @@ void initializeLoRaRadio()
     LORA_IQ_INVERSION_ON, 
     true 
   );
+}
+
+void displayLoRaInfo()
+{
+  oled.clear();
+  oled.drawString(0, 0, "LoRa radio initialized");
+  oled.drawString(0, 10, "Frequency: " + String(RF_FREQUENCY));
+  
+  switch(LORA_BANDWIDTH)
+  {
+    case 0:
+      oled.drawString(0, 20, "Bandwidth: 125 kHz");
+      break;
+    case 1:
+      oled.drawString(0, 20, "Bandwidth: 250 kHz");
+      break;
+    case 2:
+      oled.drawString(0, 20, "Bandwidth: 500 kHz");
+      break;
+    default:
+      oled.drawString(0, 20, "Bandwidth: undefined!");
+      break;
+  }
+  
+  oled.drawString(0, 30, "Spreading factor: " + String(LORA_SPREADING_FACTOR));
+  oled.drawString(0, 40, "Preamble length: " + String(LORA_PREAMBLE_LENGTH));
+  oled.display();
 }

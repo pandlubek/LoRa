@@ -13,6 +13,8 @@
 // variables
 unsigned long now = millis();
 unsigned char * encryptedInputMessage;
+// unsigned long now = millis();
+// unsigned char * encryptedInputMessage;
 
 // project files
 #include "files/configuration.h"
@@ -32,11 +34,16 @@ void setup()
   rssi=0;
 
   initializeDisplay();
+  delay(1000);
 
   initializeLoRaRadio();
-  
+  displayLoRaInfo();
+  delay(3000);
+
   setupWiFi();
-  
+  displayWiFiInfo();
+  delay(3000);
+
   mqttClient.setKeepAlive(MQTT_KEEP_ALIVE_TIME_IN_SEC);
   mqttClient.setCallback(mqttCallback);
 
@@ -53,12 +60,14 @@ void loop()
   if (WiFi.status() != WL_CONNECTED)
   {
     setupWiFi();
-    // TODO: If WWi-Fi or MQTT are not connected
+    displayWiFiInfo();
+    // TODO: If Wi-Fi or MQTT are not connected
     //       the last LoRa message should be saved in buffer 
     //       and send later
   }
 
   mqttConnection();
+  displayMQTTInfo();
 
   publishMQTTMessage_Gateway_CpuTemp();
 
