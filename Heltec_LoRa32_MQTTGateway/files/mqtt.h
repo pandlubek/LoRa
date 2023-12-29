@@ -6,6 +6,32 @@ const int mqttLWTPingIntervalInMilliseconds = MQTT_LWT_PING_INTERVAL_IN_SEC * 10
 WiFiClient wifiClient;
 PubSubClient mqttClient(MQTT_SERVER, MQTT_PORT, wifiClient);
 
+void displayMQTTInfo()
+{
+  oled.clear();
+  oled.drawString(0, 10, "Server: " + String(MQTT_SERVER) + ":" + String(MQTT_PORT));
+  if (mqttClient.connected())
+  {
+    oled.drawString(0, 0, "MQTT connected");
+    oled.drawString(0, 20, "Client: " + String(MQTT_CLIENT_ID));
+	oled.drawString(0, 40, "LWT: " + String(MQTT_TOPIC_LWT));
+  }
+  else
+  {
+    oled.drawString(0, 0, "MQTT not connected!");
+    oled.drawString(0, 20, "Error code: " + String(mqttClient.state()));
+  }
+  if (MQTT_ANONYMOUS_USER)
+  {
+    oled.drawString(0, 30, "Anonymous connection");  
+  }
+  else
+  {
+    oled.drawString(0, 30, "Username: " + String(MQTT_USERNAME));
+  }
+  oled.display();
+}
+
 void mqttCallback(char* topic, byte* message, unsigned int length)
 {
   Serial.print("Message arrived on topic: ");
@@ -69,30 +95,6 @@ void mqttConnection()
     Serial.println(" failed, rc=" + String(mqttClient.state()));
   }
   lastMQTTConnectionTrigger = millis();
-}
-
-void displayMQTTInfo()
-{
-  oled.clear();
-  oled.drawString(0, 10, "Server: " + String(MQTT_SERVER) + ":" + String(MQTT_PORT));
-  if (mqttClient.connected())
-  {
-    oled.drawString(0, 0, "MQTT connected");
-    oled.drawString(0, 20, "Client: " + String(MQTT_CLIENT_ID));
-	oled.drawString(0, 40, "LWT: " + String(MQTT_TOPIC_LWT));
-  }
-  else
-  {
-    oled.drawString(0, 0, "MQTT not connected!");
-    oled.drawString(0, 20, "Error code: " + String(mqttClient.state()));
-  }
-  if (MQTT_ANONYMOUS_USER)
-  {
-    oled.drawString(0, 30, "Anonymous connection");  
-  }
-  else
-  {
-    oled.drawString(0, 30, "Username: " + String(MQTT_USERNAME));
-  }
-  oled.display();
+  
+  displayMQTTInfo();
 }

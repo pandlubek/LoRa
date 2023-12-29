@@ -67,7 +67,6 @@ void loop()
   }
 
   mqttConnection();
-  displayMQTTInfo();
 
   publishMQTTMessage_Gateway_CpuTemp();
 
