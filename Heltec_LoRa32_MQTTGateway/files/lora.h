@@ -19,6 +19,7 @@ void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
   oled.drawString(0, 0, "Received LoRa packet:");
   oled.drawString(0, 10, "Rssi: " + String(rssi) + ", length: " + String(rxSize));
   oled.display();
+  rescheduleDisplaySleep();
 
   lora_idle = true;
 }
@@ -72,4 +73,5 @@ void displayLoRaInfo()
   oled.drawString(0, 30, "Spreading factor: " + String(LORA_SPREADING_FACTOR));
   oled.drawString(0, 40, "Preamble length: " + String(LORA_PREAMBLE_LENGTH));
   oled.display();
+  rescheduleDisplaySleep();
 }

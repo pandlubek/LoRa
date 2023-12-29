@@ -15,3 +15,23 @@ void initializeDisplay()
   oled.drawXbm(0,5,logo_width,logo_height,(const unsigned char *)logo_bits);
   oled.display();
 }
+
+unsigned long lastDisplaySleepTrigger = 0;
+const int displaySleepIntervalInMiliseconds = 10 * 1000;
+
+unsigned long s = 0;
+
+void rescheduleDisplaySleep()
+{
+	lastDisplaySleepTrigger = now;
+}
+
+void putTheDisplayToSleep()
+{
+	if (now - lastDisplaySleepTrigger > displaySleepIntervalInMiliseconds)
+	{
+		oled.clear();
+		oled.display();
+		rescheduleDisplaySleep();
+	}
+}

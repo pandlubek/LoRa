@@ -13,8 +13,6 @@
 // variables
 unsigned long now = millis();
 unsigned char * encryptedInputMessage;
-// unsigned long now = millis();
-// unsigned char * encryptedInputMessage;
 
 // project files
 #include "files/configuration.h"
@@ -93,4 +91,6 @@ void loop()
     Radio.Rx(0);
   }
   Radio.IrqProcess();
+
+  putTheDisplayToSleep();
 }

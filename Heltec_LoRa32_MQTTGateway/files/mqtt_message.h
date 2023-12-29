@@ -12,6 +12,7 @@ void publishMQTTMessage_Node_ContactSensor()
   oled.drawString(0, 10, topic);
   oled.drawString(0, 20, message);
   oled.display();
+  rescheduleDisplaySleep();
 }
 
 void publishMQTTMessage_Node_BatteryLevel()
@@ -26,6 +27,7 @@ void publishMQTTMessage_Node_BatteryLevel()
   oled.drawString(0, 30, topic);
   oled.drawString(0, 40, message);
   oled.display();
+  rescheduleDisplaySleep();
 }
 
 unsigned long lastCpuTempReadTrigger = 0;
@@ -61,5 +63,6 @@ void publishMQTTMessage_Gateway_CpuTemp()
 	oled.drawString(0, 30, String(MQTT_TOPIC_CPU_TEMP_FAHRENHEIT));
     oled.drawString(0, 40, tempFahrenheit);
     oled.display();
+	rescheduleDisplaySleep();
   }
 }

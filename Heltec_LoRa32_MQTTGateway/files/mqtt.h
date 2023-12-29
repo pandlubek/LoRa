@@ -30,6 +30,7 @@ void displayMQTTInfo()
     oled.drawString(0, 30, "Username: " + String(MQTT_USERNAME));
   }
   oled.display();
+  rescheduleDisplaySleep();
 }
 
 void mqttCallback(char* topic, byte* message, unsigned int length)
@@ -79,6 +80,7 @@ void mqttConnection()
   oled.drawString(0, 0, "Connecting MQTT...");
   oled.drawString(0, 10, "Server: " + String(MQTT_SERVER) + ":" + String(MQTT_PORT));
   oled.display();
+  rescheduleDisplaySleep();
   
   if ((MQTT_ANONYMOUS_USER && mqttClient.connect(MQTT_CLIENT_ID, MQTT_TOPIC_LWT, 1, false, MQTT_MSG_LWT_OFFLINE)) ||
     (!MQTT_ANONYMOUS_USER &&  mqttClient.connect(MQTT_CLIENT_ID, MQTT_USERNAME, MQTT_PASSWORD, MQTT_TOPIC_LWT, 1, false, MQTT_MSG_LWT_OFFLINE)))

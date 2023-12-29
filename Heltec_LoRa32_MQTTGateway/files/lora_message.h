@@ -102,6 +102,7 @@ bool validateLoRaMessage()
         Serial.println("Invalid LoRa message");
         oled.drawString(0, 20, "Invalid LoRa message");
         oled.display();
+		rescheduleDisplaySleep();
         return false;
       }
 
@@ -111,6 +112,7 @@ bool validateLoRaMessage()
         Serial.println("Invalid LoRa message");
         oled.drawString(0, 20, "Invalid LoRa message");
         oled.display();
+		rescheduleDisplaySleep();
         return false;
       }
 
@@ -130,6 +132,7 @@ bool validateLoRaMessage()
         Serial.println("Invalid LoRa message");
         oled.drawString(0, 20, "Invalid LoRa message");
         oled.display();
+		rescheduleDisplaySleep();
         return false;
       }
 
@@ -141,11 +144,13 @@ bool validateLoRaMessage()
     oled.drawString(0, 20, "LoRa message is valid, but");
     oled.drawString(0, 30, "its number is too low");
     oled.display();
+	rescheduleDisplaySleep();
     return false;
   }
 
   Serial.println("LoRa message is valid");
   oled.drawString(0, 20, "LoRa message is valid");
   oled.display();
+  rescheduleDisplaySleep();
   return true;
 }

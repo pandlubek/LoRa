@@ -26,6 +26,7 @@ void setupWiFi()
     }
     delay(500);
     Serial.print(".");
+	rescheduleDisplaySleep();
     attempt++;
   }
 
@@ -36,7 +37,6 @@ void setupWiFi()
 void displayWiFiInfo()
 {
   oled.clear();
-  
   if (WiFi.status() != WL_CONNECTED)
   {
 	oled.drawString(0, 0, "Wi-Fi not connected!");
