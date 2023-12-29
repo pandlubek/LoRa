@@ -17,7 +17,6 @@ If you are interested in a case for this device, you can print it using this [3D
 ![Heltec LoRa32 gateway housing](https://github.com/pandlubek/LoRa/assets/152999857/1450ab65-a2b5-43e9-bdbf-38a1a164cd68)
 
 ## Plans for the future
-- Add support for built-in OLED display
 - Replace the `configuration.h` file with a website where the user will be able to configure the required gateway parameters.
 
 # Door sensor

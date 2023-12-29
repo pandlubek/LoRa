@@ -6,6 +6,13 @@ void publishMQTTMessage_Node_ContactSensor()
   mqttClient.publish(topic.c_str(), message.c_str());
 
   Serial.printf("MQTT message has been published (topic: %s, value: %s)\r\n", topic.c_str(), message.c_str());
+  
+  oled.clear();
+  oled.drawString(0, 0, "MQTT published:");
+  oled.drawString(0, 10, topic);
+  oled.drawString(0, 20, message);
+  oled.display();
+  rescheduleDisplaySleep();
 }
 
 void publishMQTTMessage_Node_BatteryLevel()
@@ -16,6 +23,11 @@ void publishMQTTMessage_Node_BatteryLevel()
   mqttClient.publish(topic.c_str(), message.c_str());
 
   Serial.printf("MQTT message has been published (topic: %s, value: %s)\r\n", topic.c_str(), message.c_str());
+  
+  oled.drawString(0, 30, topic);
+  oled.drawString(0, 40, message);
+  oled.display();
+  rescheduleDisplaySleep();
 }
 
 unsigned long lastCpuTempReadTrigger = 0;
@@ -43,5 +55,14 @@ void publishMQTTMessage_Gateway_CpuTemp()
     Serial.printf("MQTT message has been published (topic: %s, value: %s)\r\n", MQTT_TOPIC_CPU_TEMP_FAHRENHEIT, tempFahrenheit.c_str());
     
     lastCpuTempReadTrigger = millis();
+
+    oled.clear();
+    oled.drawString(0, 0, "MQTT published:");
+    oled.drawString(0, 10, String(MQTT_TOPIC_CPU_TEMP_CELSIUS));
+    oled.drawString(0, 20, tempCelsius);
+	oled.drawString(0, 30, String(MQTT_TOPIC_CPU_TEMP_FAHRENHEIT));
+    oled.drawString(0, 40, tempFahrenheit);
+    oled.display();
+	rescheduleDisplaySleep();
   }
 }
