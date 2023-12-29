@@ -12,6 +12,6 @@ void initializeDisplay()
   oled.init();
   oled.clear();
   oled.setFont(ArialMT_Plain_10);
-  oled.drawString(0, 20, "Booting...");
+  oled.drawXbm(0,5,logo_width,logo_height,(const unsigned char *)logo_bits);
   oled.display();
 }

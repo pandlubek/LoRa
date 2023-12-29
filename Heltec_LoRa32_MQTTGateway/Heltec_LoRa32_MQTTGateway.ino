@@ -18,6 +18,7 @@ unsigned char * encryptedInputMessage;
 
 // project files
 #include "files/configuration.h"
+#include "files/logo.h"
 #include "files/display.h"
 #include "files/wifi.h"
 #include "files/aes.h"
