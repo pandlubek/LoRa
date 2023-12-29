@@ -1,10 +1,14 @@
 // external libraries
-#include "LoRaWan_APP.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
-#include "Arduino.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
-#include "WiFi.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
-#include "mbedtls/aes.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
-#include "Preferences.h" // https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
-#include "PubSubClient.h" // https://github.com/knolleary/pubsubclient
+// https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
+#include "LoRaWan_APP.h"
+#include "Arduino.h"
+#include "WiFi.h"
+#include "mbedtls/aes.h"
+#include "Preferences.h"
+#include "Wire.h"
+#include "HT_SSD1306Wire.h"
+// https://github.com/knolleary/pubsubclient
+#include "PubSubClient.h"
 
 // variables
 unsigned long now = millis();
@@ -12,6 +16,7 @@ unsigned char * encryptedInputMessage;
 
 // project files
 #include "files/configuration.h"
+#include "files/display.h"
 #include "files/wifi.h"
 #include "files/aes.h"
 #include "files/lora.h"
@@ -25,6 +30,8 @@ void setup()
   Mcu.begin();
   txNumber=0;
   rssi=0;
+
+  initializeDisplay();
 
   initializeLoRaRadio();
   
