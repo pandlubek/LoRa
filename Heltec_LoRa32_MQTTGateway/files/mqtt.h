@@ -49,13 +49,22 @@ void mqttConnection()
 
   // try to connect to MQTT every 5 seconds
   Serial.print("Attempting MQTT connection...");
+  oled.clear();
+  oled.drawString(0, 0, "Connecting MQTT...");
+  oled.drawString(0, 10, String(MQTT_SERVER) + ":" + String(MQTT_PORT));
+  oled.display();
+  
   if ((MQTT_ANONYMOUS_USER && mqttClient.connect(MQTT_CLIENT_ID, MQTT_TOPIC_LWT, 1, false, MQTT_MSG_LWT_OFFLINE)) ||
     (!MQTT_ANONYMOUS_USER &&  mqttClient.connect(MQTT_CLIENT_ID, MQTT_USERNAME, MQTT_PASSWORD, MQTT_TOPIC_LWT, 1, false, MQTT_MSG_LWT_OFFLINE)))
   {
     Serial.println(" connected");
+	oled.drawString(0, 20, "connected");
+	oled.display();
     mqttClient.publish(MQTT_TOPIC_LWT, MQTT_MSG_LWT_ONLINE);
     lastMQTTPingTrigger = millis();
 	Serial.printf("MQTT LWT topic: %s\r\n", MQTT_TOPIC_LWT);
+	oled.drawString(0, 30, "LWT topic: " + String(MQTT_TOPIC_LWT));
+	oled.display();
     // Subscribe channels
     //mqttClient.subscribe("MQTT channel here");
   }
@@ -63,6 +72,11 @@ void mqttConnection()
   {
     Serial.print(" failed, rc=");
     Serial.print(mqttClient.state() + "\r\n");
+	
+	oled.drawString(0, 20, "failed :-(");
+	oled.drawString(0, 30, String(mqttClient.state()));
+	oled.display();
+	delay(5000);
   }
   lastMQTTConnectionTrigger = millis();
 }

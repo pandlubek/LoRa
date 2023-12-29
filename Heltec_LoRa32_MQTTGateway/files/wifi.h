@@ -36,4 +36,5 @@ void setupWiFi()
   oled.drawString(0, 30, "IP address: ");
   oled.drawString(0, 40, WiFi.localIP().toString());
   oled.display();
+  delay(5000);
 }
