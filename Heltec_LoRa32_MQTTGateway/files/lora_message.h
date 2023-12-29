@@ -74,6 +74,18 @@ void updateLastSavedLoRaMessageNumber()
 	preferences.end();
 }
 
+void removeLastSavedLoRaMessageNumber(int nodeId)
+{
+	String counterName = "counter_node_" + String(nodeId);
+	preferences.begin("message", false);
+	unsigned int counter = preferences.getUInt(counterName.c_str(), 0);
+	
+	preferences.remove(counterName.c_str());
+	Serial.printf("Data saved for key %s has been deleted\r\n", counterName.c_str());
+	
+	preferences.end();
+}
+
 bool validateLoRaMessage()
 {
   // message format
