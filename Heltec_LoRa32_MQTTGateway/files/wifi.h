@@ -12,12 +12,14 @@ void setupWiFi()
 
   int attempt = 0;
   Serial.print("\r\nConnecting Wi-Fi...");
+  
   oled.clear();
   oled.drawString(0, 0, "Connecting Wi-Fi...");
-  oled.drawString(0, 10, WIFI_SSID);
+  oled.drawString(0, 10, "SSID: " + String(WIFI_SSID));
   oled.display();
   
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     if (attempt == 60)
     {
       esp_restart();
@@ -28,13 +30,22 @@ void setupWiFi()
   }
 
   Serial.print("connected\r\n");
-  Serial.print("IP address: ");
-  Serial.print(WiFi.localIP());
-  Serial.println();
+  Serial.println("IP: " + WiFi.localIP().toString());
+}
+
+void displayWiFiInfo()
+{
+  oled.clear();
   
-  oled.drawString(0, 20, "connected");
-  oled.drawString(0, 30, "IP address: ");
-  oled.drawString(0, 40, WiFi.localIP().toString());
+  if (WiFi.status() != WL_CONNECTED)
+  {
+	oled.drawString(0, 0, "Wi-Fi not connected!");
+  }
+  else
+  {
+    oled.drawString(0, 0, "Wi-Fi connected");
+  }
+  oled.drawString(0, 10, "SSID; " + String(WIFI_SSID));
+  oled.drawString(0, 20, "IP: " + WiFi.localIP().toString());
   oled.display();
-  delay(5000);
 }
