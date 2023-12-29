@@ -83,6 +83,13 @@ void removeLastSavedLoRaMessageNumber(int nodeId)
 	preferences.remove(counterName.c_str());
 	Serial.printf("Data saved for key %s has been deleted\r\n", counterName.c_str());
 	
+	oled.clear();
+	oled.drawString(0, 0, "Removed data for the key ");
+	oled.drawString(0, 10, counterName);
+	oled.display();
+	rescheduleDisplaySleep();
+	delay(5000);
+	
 	preferences.end();
 }
 
