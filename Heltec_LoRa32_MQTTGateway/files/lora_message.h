@@ -100,6 +100,8 @@ bool validateLoRaMessage()
       decryptedOutputMessage[7] != '/')
       {
         Serial.println("Invalid LoRa message");
+        oled.drawString(0, 20, "Invalid LoRa message");
+        oled.display();
         return false;
       }
 
@@ -107,6 +109,8 @@ bool validateLoRaMessage()
       decryptedOutputMessage[2] != 'O')
       {
         Serial.println("Invalid LoRa message");
+        oled.drawString(0, 20, "Invalid LoRa message");
+        oled.display();
         return false;
       }
 
@@ -124,6 +128,8 @@ bool validateLoRaMessage()
       !isdigit(decryptedOutputMessage[15]))
       {
         Serial.println("Invalid LoRa message");
+        oled.drawString(0, 20, "Invalid LoRa message");
+        oled.display();
         return false;
       }
 
@@ -132,9 +138,14 @@ bool validateLoRaMessage()
   if (incommingMessageNumber <= savedMessageNumber)
   {
     Serial.printf("LoRa message is valid, but the incomming message numer (%s) is lower than the last one saved (%s)\r\n", String(incommingMessageNumber), String(savedMessageNumber));
+    oled.drawString(0, 20, "LoRa message is valid, but");
+    oled.drawString(0, 30, "its number is too low");
+    oled.display();
     return false;
   }
 
   Serial.println("LoRa message is valid");
+  oled.drawString(0, 20, "LoRa message is valid");
+  oled.display();
   return true;
 }

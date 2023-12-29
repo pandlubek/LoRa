@@ -17,9 +17,7 @@ void OnRxDone(uint8_t *payload, uint16_t size, int16_t rssi, int8_t snr)
   
   oled.clear();
   oled.drawString(0, 0, "Received LoRa packet:");
-  oled.drawString(0, 10, String(rxpacket));
-  oled.drawString(0, 20, "Rssi: " + String(rssi));
-  oled.drawString(0, 30, "Length: " + String(rxSize));
+  oled.drawString(0, 10, "Rssi: " + String(rssi) + ", length: " + String(rxSize));
   oled.display();
 
   lora_idle = true;
