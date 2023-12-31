@@ -1,4 +1,5 @@
 // external libraries
+// https://github.com/Heltec-Aaron-Lee/WiFi_Kit_series/releases/tag/0.0.8
 #include "LoRaWan_APP.h"
 #include "Arduino.h"
 #include "mbedtls/aes.h"
@@ -51,7 +52,7 @@ void loop()
         sendLoRaMessage();
         lora_idle = false;
         messagePublished = true;
-        lastAwakening = millis();
+        lastAwakening = now;
       }
       Radio.IrqProcess();
       Serial.println();
@@ -64,7 +65,7 @@ void loop()
       sendLoRaMessage();
       lora_idle = false;
       messagePublished = false;
-      lastAwakening = millis();
+      lastAwakening = now;
     }
     Radio.IrqProcess();
     
