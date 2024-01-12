@@ -12,7 +12,7 @@ int extractLoRaIncomingMessageNumber()
 		decryptedOutputMessage[15]
 	};
 	
-	return atoi(tmp);
+	return (int)strtol(tmp, NULL, 10);
 }
 
 int extractLoRaIncomingMessageBatteryLevel()
@@ -24,7 +24,7 @@ int extractLoRaIncomingMessageBatteryLevel()
 		decryptedOutputMessage[6]
 	};
 	
-	return atoi(tmp);
+	return (int)strtol(tmp, NULL, 10);
 }
 
 String extractLoRaIncomingMessageNodeId()
